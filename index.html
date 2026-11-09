@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoltVibe — Fast Chargers for iPhone</title>
+<meta name="description" content="Fast chargers, cables and wireless pads for iPhone. Free UK delivery over £20.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M18 2 6 18h8l-2 12 12-16h-8z' fill='%2300f0ff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--panel:#10121b;--line:#1f2333;--text:#e8ecf5;--muted:#8a93ab;--cyan:#00f0ff;--lime:#7dff5a;--pink:#ff3df2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+/* bar */
+.bar{background:linear-gradient(90deg,var(--cyan),var(--lime));color:#000;text-align:center;font-size:.85rem;font-weight:700;padding:6px 12px}
+header{position:sticky;top:0;z-index:20;background:rgba(7,8,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;gap:8px;align-items:center;font-weight:700;font-size:1.35rem;letter-spacing:.5px}
+.logo svg{filter:drop-shadow(0 0 8px var(--cyan))}
+.logo span{color:var(--cyan)}
+nav ul{display:flex;gap:28px;list-style:none;color:var(--muted)}
+nav ul a:hover{color:var(--cyan)}
+.cartbtn{background:none;border:1px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:8px 16px;font:inherit;cursor:pointer;display:flex;gap:8px;align-items:center}
+.cartbtn:hover{background:var(--cyan);color:#000}
+.count{background:var(--pink);color:#fff;border-radius:999px;font-size:.75rem;min-width:20px;height:20px;display:inline-grid;place-items:center;padding:0 6px}
+/* hero */
+.hero{position:relative;padding:90px 0 80px;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto auto;width:700px;height:700px;background:radial-gradient(circle,rgba(0,240,255,.18),transparent 60%);pointer-events:none}
+.hero:after{content:"";position:absolute;inset:auto auto -50% -15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,61,242,.12),transparent 60%);pointer-events:none}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%);opacity:.5}
+.hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.tag{display:inline-block;border:1px solid var(--lime);color:var(--lime);border-radius:999px;padding:4px 12px;font-size:.8rem;margin-bottom:18px}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.02;letter-spacing:-1.5px}
+h1 em{font-style:normal;color:var(--cyan);text-shadow:0 0 24px rgba(0,240,255,.6)}
+.hero p{color:var(--muted);font-size:1.15rem;margin:20px 0 30px;max-width:480px}
+.btn{display:inline-block;background:var(--cyan);color:#000;font-weight:700;padding:14px 26px;border-radius:12px;border:0;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 0 24px rgba(0,240,255,.45);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--text);box-shadow:none;border:1px solid var(--line);margin-left:10px}
+.hero-art{display:grid;place-items:center}
+.stats{display:flex;gap:30px;margin-top:40px}
+.stats b{display:block;font-size:1.6rem;color:var(--text)}
+.stats span{color:var(--muted);font-size:.85rem}
+/* sections */
+section{padding:70px 0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.8px;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:36px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer;font:inherit}
+.chip.on{border-color:var(--cyan);color:var(--cyan)}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.thumb{aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#1a1f33,#0b0d14 70%);position:relative}
+.badge{position:absolute;top:12px;left:12px;background:var(--pink);color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.badge.lime{background:var(--lime);color:#000}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-size:1.05rem}
+.info small{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+.price{font-size:1.25rem;font-weight:700}
+.price s{color:var(--muted);font-size:.85rem;font-weight:400;margin-left:6px}
+.add{background:none;border:1px solid var(--cyan);color:var(--cyan);border-radius:10px;padding:8px 14px;font:inherit;cursor:pointer}
+.add:hover{background:var(--cyan);color:#000}
+.stars{color:#ffd23f;font-size:.85rem}
+/* features */
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.feat i{font-style:normal;font-size:1.6rem;display:block;margin-bottom:10px}
+.feat h4{margin-bottom:4px}
+.feat p{color:var(--muted);font-size:.92rem}
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.rev p{margin:10px 0;color:#cfd5e4}
+.rev small{color:var(--muted)}
+/* faq */
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:500}
+details p{color:var(--muted);margin-top:10px}
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.news{display:flex;gap:8px}
+.news input{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;font:inherit;min-width:0;flex:1}
+/* drawer */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#0b0d14;border-left:1px solid var(--line);transform:translateX(100%);transition:.3s;z-index:50;display:flex;flex-direction:column}
+.open .overlay{opacity:1;pointer-events:auto}
+.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--line)}
+.x{background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+.items{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.item{display:flex;gap:12px;align-items:center}
+.item .mini{width:60px;height:60px;border-radius:10px;background:var(--panel);display:grid;place-items:center;flex:none}
+.item div{flex:1}
+.qty{display:flex;gap:8px;align-items:center;margin-top:4px}
+.qty button{width:26px;height:26px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer}
+.df{padding:20px;border-top:1px solid var(--line)}
+.tot{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.ship{color:var(--lime);font-size:.85rem;margin-bottom:14px}
+.empty{color:var(--muted);text-align:center;margin-top:40px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--cyan);color:#000;font-weight:700;padding:12px 22px;border-radius:12px;transition:.3s;z-index:60}
+.toast.show{transform:translate(-50%,0)}
+@media (max-width:860px){
+ nav ul{display:none}
+ .hero-in{grid-template-columns:1fr}
+ .hero-art{order:-1}
+ .hero-art svg{width:220px;height:auto}
+ .feats{grid-template-columns:1fr 1fr}
+ .reviews{grid-template-columns:1fr}
+ .btn.ghost{margin:10px 0 0}
+}
+</style>
+</head>
+<body>
+<div class="bar">⚡ Free UK delivery on orders over £20 · 30-day returns</div>
+<header><div class="wrap nav">
+ <a class="logo" href="#"><svg width="26" height="26" viewBox="0 0 32 32"><path d="M18 2 6 18h8l-2 12 12-16h-8z" fill="#00f0ff"/></svg>Volt<span>Vibe</span></a>
+ <nav><ul><li><a href="#shop">Shop</a></li><li><a href="#why">Why us</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+ <button class="cartbtn" id="openCart">Cart <span class="count" id="count">0</span></button>
+</div></header>
+
+<section class="hero"><div class="grid-bg"></div><div class="wrap hero-in">
+ <div>
+  <span class="tag">● New: 35W dual USB-C</span>
+  <h1>Charge <em>faster.</em><br>Live wired-free.</h1>
+  <p>Fast chargers, braided cables and magnetic wireless pads built for every iPhone from 8 to the latest models.</p>
+  <a class="btn" href="#shop">Shop chargers</a><a class="btn ghost" href="#why">Why VoltVibe</a>
+  <div class="stats"><div><b>0→50%</b><span>in ~30 min*</span></div><div><b>4.8★</b><span>avg rating</span></div><div><b>30 days</b><span>easy returns</span></div></div>
+ </div>
+ <div class="hero-art">
+  <svg width="340" height="340" viewBox="0 0 340 340">
+   <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00f0ff"/><stop offset="1" stop-color="#7dff5a"/></linearGradient>
+   <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+   <circle cx="170" cy="170" r="150" fill="none" stroke="#1f2333" stroke-width="2"/>
+   <circle cx="170" cy="170" r="120" fill="none" stroke="url(#g1)" stroke-width="3" stroke-dasharray="560 200" filter="url(#glow)"><animateTransform attributeName="transform" type="rotate" from="0 170 170" to="360 170 170" dur="8s" repeatCount="indefinite"/></circle>
+   <rect x="125" y="80" width="90" height="180" rx="18" fill="#10121b" stroke="#2c3248" stroke-width="2"/>
+   <rect x="133" y="92" width="74" height="156" rx="12" fill="#07080d"/>
+   <path d="M176 128 152 172h16l-4 34 26-46h-16z" fill="url(#g1)" filter="url(#glow)"/>
+   <text x="170" y="232" fill="#7dff5a" font-size="13" text-anchor="middle" font-family="Space Grotesk">87%</text>
+  </svg>
+ </div>
+</div></section>
+
+<section id="shop"><div class="wrap">
+ <h2>Shop the range</h2>
+ <p class="sub">Compatible with iPhone 8 through the latest iPhone models. USB-C and Lightning options.</p>
+ <div class="filters" id="filters"></div>
+ <div class="products" id="products"></div>
+</div></section>
+
+<section id="why"><div class="wrap">
+ <h2>Why VoltVibe</h2><p class="sub">Charging gear that just works.</p>
+ <div class="feats">
+  <div class="feat"><i>⚡</i><h4>Fast charging</h4><p>USB-C Power Delivery up to 35W for quick top-ups.</p></div>
+  <div class="feat"><i>🛡️</i><h4>Safe by design</h4><p>Over-heat, over-current and short-circuit protection.</p></div>
+  <div class="feat"><i>🔁</i><h4>30-day returns</h4><p>Not happy? Send it back within 30 days.</p></div>
+  <div class="feat"><i>📦</i><h4>Tracked delivery</h4><p>Every order ships with a tracking number.</p></div>
+ </div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+ <h2>What customers say</h2><p class="sub">Example reviews: replace with real ones once orders come in.</p>
+ <div class="reviews">
+  <div class="rev"><span class="stars">★★★★★</span><p>“The braided cable feels way tougher than the one that came in the box.”</p><small>Sample review</small></div>
+  <div class="rev"><span class="stars">★★★★★</span><p>“Magnetic pad snaps on perfectly and charges overnight with no heat.”</p><small>Sample review</small></div>
+  <div class="rev"><span class="stars">★★★★☆</span><p>“Dual charger lets me charge my phone and earbuds at once. Handy for travel.”</p><small>Sample review</small></div>
+ </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <h2>FAQ</h2><p class="sub">Quick answers.</p>
+ <details><summary>Will these work with my iPhone?</summary><p>Our USB-C cables and chargers work with iPhone 15 and newer. Lightning cables work with iPhone 8 to iPhone 14. Magnetic wireless pads suit iPhone 12 and newer.</p></details>
+ <details><summary>How long does delivery take?</summary><p>Orders usually arrive in 5–10 working days with tracking. Delivery is free on orders over £20.</p></details>
+ <details><summary>What is your returns policy?</summary><p>You can return any item within 30 days of delivery for a full refund.</p></details>
+ <details><summary>Are these official Apple products?</summary><p>No. VoltVibe is an independent brand. Our products are third-party accessories compatible with iPhone.</p></details>
+</div></section>
+
+<footer><div class="wrap foot">
+ <div><div class="logo" style="margin-bottom:8px"><svg width="22" height="22" viewBox="0 0 32 32"><path d="M18 2 6 18h8l-2 12 12-16h-8z" fill="#00f0ff"/></svg>Volt<span>Vibe</span></div>
+ <p>© <span id="yr"></span> VoltVibe. iPhone is a trademark of Apple Inc. VoltVibe is not affiliated with Apple.</p>
+ <p>*Charging times vary by model and battery condition.</p></div>
+ <form class="news" onsubmit="event.preventDefault();toast('Thanks, you\'re on the list!');this.reset()"><input type="email" required placeholder="Email for deals"><button class="btn" style="padding:12px 18px">Join</button></form>
+</div></footer>
+
+<div id="cartRoot">
+ <div class="overlay" id="overlay"></div>
+ <aside class="drawer" aria-label="Cart">
+  <div class="dh"><h3>Your cart</h3><button class="x" id="closeCart" aria-label="Close">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df"><div class="tot"><span>Total</span><span id="total">£0.00</span></div><div class="ship" id="ship"></div><button class="btn" style="width:100%" id="checkout">Checkout</button></div>
+ </aside>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const ICONS={
+ brick:'<svg width="120" height="120" viewBox="0 0 120 120"><rect x="30" y="34" width="60" height="62" rx="12" fill="#1a1f33" stroke="#00f0ff" stroke-width="2"/><rect x="44" y="18" width="6" height="18" rx="2" fill="#8a93ab"/><rect x="70" y="18" width="6" height="18" rx="2" fill="#8a93ab"/><rect x="50" y="70" width="20" height="8" rx="3" fill="#00f0ff"/></svg>',
+ dual:'<svg width="120" height="120" viewBox="0 0 120 120"><rect x="28" y="30" width="64" height="66" rx="12" fill="#1a1f33" stroke="#7dff5a" stroke-width="2"/><rect x="44" y="14" width="6" height="18" rx="2" fill="#8a93ab"/><rect x="70" y="14" width="6" height="18" rx="2" fill="#8a93ab"/><rect x="42" y="64" width="14" height="7" rx="3" fill="#7dff5a"/><rect x="64" y="64" width="14" height="7" rx="3" fill="#7dff5a"/></svg>',
+ cable:'<svg width="120" height="120" viewBox="0 0 120 120"><path d="M30 90c0-40 60-20 60-60" fill="none" stroke="#00f0ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="4 4"/><rect x="22" y="86" width="16" height="22" rx="4" fill="#1a1f33" stroke="#8a93ab"/><rect x="82" y="12" width="16" height="22" rx="4" fill="#1a1f33" stroke="#8a93ab"/></svg>',
+ cable2:'<svg width="120" height="120" viewBox="0 0 120 120"><path d="M30 90c0-40 60-20 60-60" fill="none" stroke="#ff3df2" stroke-width="6" stroke-linecap="round" stroke-dasharray="4 4"/><rect x="22" y="86" width="16" height="22" rx="4" fill="#1a1f33" stroke="#8a93ab"/><rect x="82" y="12" width="16" height="22" rx="4" fill="#1a1f33" stroke="#8a93ab"/></svg>',
+ pad:'<svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="62" r="38" fill="#1a1f33" stroke="#00f0ff" stroke-width="2"/><circle cx="60" cy="62" r="26" fill="none" stroke="#00f0ff" stroke-width="2" opacity=".5"/><path d="M63 46 52 64h8l-2 14 12-19h-8z" fill="#00f0ff"/></svg>',
+ stand:'<svg width="120" height="120" viewBox="0 0 120 120"><rect x="44" y="16" width="34" height="64" rx="8" fill="#1a1f33" stroke="#7dff5a" stroke-width="2" transform="rotate(-8 60 50)"/><path d="M34 100h52l-8-16H42z" fill="#1a1f33" stroke="#7dff5a" stroke-width="2"/></svg>',
+ car:'<svg width="120" height="120" viewBox="0 0 120 120"><rect x="48" y="20" width="24" height="70" rx="10" fill="#1a1f33" stroke="#00f0ff" stroke-width="2"/><rect x="54" y="90" width="12" height="14" rx="2" fill="#8a93ab"/><rect x="55" y="34" width="10" height="5" rx="2" fill="#00f0ff"/><rect x="55" y="46" width="10" height="5" rx="2" fill="#00f0ff"/></svg>',
+ bank:'<svg width="120" height="120" viewBox="0 0 120 120"><rect x="30" y="26" width="60" height="70" rx="14" fill="#1a1f33" stroke="#ff3df2" stroke-width="2"/><rect x="42" y="40" width="36" height="8" rx="4" fill="#ff3df2"/><circle cx="60" cy="72" r="10" fill="none" stroke="#ff3df2" stroke-width="2"/></svg>'
+};
+const PRODUCTS=[
+ {id:'p1',name:'20W USB-C Fast Charger',sub:'Compact plug · PD fast charge',price:12.99,was:19.99,cat:'Plugs',icon:'brick',badge:'Best seller',rating:4.8},
+ {id:'p2',name:'35W Dual USB-C Charger',sub:'Charge two devices at once',price:22.99,was:29.99,cat:'Plugs',icon:'dual',badge:'New',lime:1,rating:4.9},
+ {id:'p3',name:'Braided USB-C to USB-C Cable 2m',sub:'For iPhone 15 and newer',price:9.99,cat:'Cables',icon:'cable',rating:4.7},
+ {id:'p4',name:'Braided USB-C to Lightning Cable 2m',sub:'For iPhone 8 to 14',price:9.99,cat:'Cables',icon:'cable2',rating:4.7},
+ {id:'p5',name:'15W Magnetic Wireless Pad',sub:'Snap-on charging · iPhone 12+',price:19.99,was:27.99,cat:'Wireless',icon:'pad',badge:'-28%',rating:4.6},
+ {id:'p6',name:'3-in-1 Wireless Charging Stand',sub:'Phone, watch and earbuds',price:34.99,was:44.99,cat:'Wireless',icon:'stand',rating:4.8},
+ {id:'p7',name:'Dual-Port Car Charger 38W',sub:'USB-C + USB-A · fast charge',price:14.99,cat:'Travel',icon:'car',rating:4.7},
+ {id:'p8',name:'10,000mAh Magnetic Power Bank',sub:'Wireless + USB-C output',price:29.99,was:39.99,cat:'Travel',icon:'bank',badge:'Hot',rating:4.8}
+];
+const $=s=>document.querySelector(s);
+const gbp=n=>'£'+n.toFixed(2);
+let cart={};try{cart=JSON.parse(localStorage.getItem('vv-cart'))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem('vv-cart',JSON.stringify(cart))}catch(e){}};
+let filter='All';
+function renderFilters(){const cats=['All',...new Set(PRODUCTS.map(p=>p.cat))];$('#filters').innerHTML=cats.map(c=>`<button class="chip ${c===filter?'on':''}" data-c="${c}">${c}</button>`).join('')}
+function renderProducts(){$('#products').innerHTML=PRODUCTS.filter(p=>filter==='All'||p.cat===filter).map(p=>`
+ <div class="card"><div class="thumb">${p.badge?`<span class="badge ${p.lime?'lime':''}">${p.badge}</span>`:''}${ICONS[p.icon]}</div>
+ <div class="info"><h3>${p.name}</h3><small>${p.sub}</small><span class="stars">${'★'.repeat(Math.round(p.rating))} <small>${p.rating}</small></span>
+ <div class="row"><span class="price">${gbp(p.price)}${p.was?`<s>${gbp(p.was)}</s>`:''}</span><button class="add" data-id="${p.id}">Add</button></div></div></div>`).join('')}
+function renderCart(){const ids=Object.keys(cart).filter(id=>cart[id]>0);let total=0,n=0;
+ $('#items').innerHTML=ids.length?ids.map(id=>{const p=PRODUCTS.find(x=>x.id===id);if(!p)return'';total+=p.price*cart[id];n+=cart[id];
+ return `<div class="item"><div class="mini">${ICONS[p.icon].replace(/width="120" height="120"/,'width="48" height="48"')}</div><div><b>${p.name}</b><div class="qty"><button data-d="${id}">−</button>${cart[id]}<button data-i="${id}">+</button></div></div><span>${gbp(p.price*cart[id])}</span></div>`}).join(''):'<p class="empty">Your cart is empty.</p>';
+ $('#total').textContent=gbp(total);$('#count').textContent=n;
+ $('#ship').textContent=total===0?'':total>=20?'✓ You get free UK delivery':`Add ${gbp(20-total)} more for free delivery`;save()}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2200)}
+document.addEventListener('click',e=>{const t=e.target;
+ if(t.dataset.c){filter=t.dataset.c;renderFilters();renderProducts()}
+ if(t.classList.contains('add')){cart[t.dataset.id]=(cart[t.dataset.id]||0)+1;renderCart();toast('Added to cart ⚡')}
+ if(t.dataset.i){cart[t.dataset.i]++;renderCart()}
+ if(t.dataset.d){cart[t.dataset.d]--;if(cart[t.dataset.d]<=0)delete cart[t.dataset.d];renderCart()}
+});
+$('#openCart').onclick=()=>document.body.classList.add('open');
+$('#closeCart').onclick=$('#overlay').onclick=()=>document.body.classList.remove('open');
+$('#checkout').onclick=()=>toast(Object.keys(cart).length?'Checkout is coming soon. Orders open shortly!':'Your cart is empty');
+$('#yr').textContent=new Date().getFullYear();
+renderFilters();renderProducts();renderCart();
+</script>
+</body>
+</html>
